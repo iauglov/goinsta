@@ -31,7 +31,7 @@ import (
 // Also you can use SetProxy and UnsetProxy to set and unset proxy.
 // Golang also provides the option to set a proxy using HTTP_PROXY env var.
 type Instagram struct {
-	User string
+	user string
 	pass string
 	// device id: android-1923fjnma8123
 	dID string
@@ -79,6 +79,11 @@ type Instagram struct {
 // the Instagram, instead of returning mocked responses.
 func (inst *Instagram) SetHTTPClient(client *http.Client) {
 	inst.c = client
+}
+
+// Get user name
+func (inst *Instagram) GetUser() string {
+	return inst.user
 }
 
 // SetHTTPTransport sets http transport. This further allows users to tweak the underlying
