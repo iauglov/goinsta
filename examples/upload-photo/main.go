@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/TheForgotten69/goinsta/v2"
+	"github.com/iauglov/goinsta/v2"
 )
 
 func main() {
