@@ -31,7 +31,7 @@ import (
 // Also you can use SetProxy and UnsetProxy to set and unset proxy.
 // Golang also provides the option to set a proxy using HTTP_PROXY env var.
 type Instagram struct {
-	user string
+	User string
 	pass string
 	// device id: android-1923fjnma8123
 	dID string
