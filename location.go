@@ -30,6 +30,7 @@ type LayoutSection struct {
 }
 
 type Section struct {
+	inst          *Instagram
 	Sections      []LayoutSection `json:"sections"`
 	MoreAvailable bool            `json:"more_available"`
 	NextPage      int             `json:"next_page"`
@@ -59,5 +60,23 @@ func (l *LocationInstance) Feeds(locationID int64) (*Section, error) {
 
 	section := &Section{}
 	err = json.Unmarshal(body, section)
+	if err != nil {
+		return nil, err
+	}
+
+	section.inst = l.inst
+	section.setValues()
+
 	return section, err
+}
+
+func (s *Section) setValues() {
+	for i := range s.Sections {
+		medias := s.Sections[i].LayoutContent.Medias
+		for j := range medias {
+			setToItem(&medias[j].Media, &FeedMedia{
+				inst: s.inst,
+			})
+		}
+	}
 }

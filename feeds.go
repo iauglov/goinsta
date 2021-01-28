@@ -103,6 +103,7 @@ func (ft *FeedTag) setValues() {
 			inst:   ft.inst,
 			NextID: ft.RankedItems[i].ID,
 		}
+		setToItem(&ft.RankedItems[i], ft.RankedItems[i].media)
 	}
 
 	for i := range ft.Images {
@@ -110,7 +111,9 @@ func (ft *FeedTag) setValues() {
 			inst:   ft.inst,
 			NextID: ft.Images[i].ID,
 		}
+		setToItem(&ft.Images[i], ft.Images[i].media)
 	}
+
 }
 
 // Next paginates over hashtag feed.
